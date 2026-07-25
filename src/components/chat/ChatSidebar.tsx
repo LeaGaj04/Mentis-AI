@@ -49,7 +49,7 @@ export const ChatSidebar: React.FC<ChatSidebarProps> = ({
         <div className="p-4">
           <button
             onClick={onNewChat}
-            className="flex w-full items-center gap-2 rounded-xl bg-teal-50 dark:bg-teal-900/30 px-4 py-2.5 text-sm font-semibold text-teal-700 dark:text-teal-400 border border-teal-200/60 dark:border-teal-700/50 hover:bg-teal-100 dark:hover:bg-teal-900/50 transition-colors"
+            className="flex w-full items-center gap-2 rounded-xl bg-slate-50 dark:bg-slate-900/30 px-4 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/50 hover:bg-slate-100 dark:hover:bg-slate-900/50 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Nueva Conversación
@@ -73,7 +73,7 @@ export const ChatSidebar: React.FC<ChatSidebarProps> = ({
                 }`}
               >
                 <div className="flex items-center gap-2 overflow-hidden">
-                  <MessageSquare className={`h-4 w-4 shrink-0 ${activeChatId === chat.id ? 'text-teal-600 dark:text-teal-500' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <MessageSquare className={`h-4 w-4 shrink-0 ${activeChatId === chat.id ? 'text-slate-600 dark:text-slate-500' : 'text-slate-400 dark:text-slate-500'}`} />
                   <span className="truncate">{chat.title}</span>
                 </div>
                 

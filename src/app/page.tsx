@@ -106,7 +106,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors">
+    <div className="flex h-screen w-full flex-col overflow-hidden bg-transparent transition-colors">
       {/* Header Component */}
       <Header
         user={user}

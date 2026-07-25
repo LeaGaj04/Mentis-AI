@@ -27,11 +27,11 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({
           onClick={() => onSelectMode('confidente')}
           className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
             currentMode === 'confidente'
-              ? 'bg-white dark:bg-slate-800 text-teal-800 dark:text-teal-400 shadow-md shadow-slate-400/20 dark:shadow-slate-950/50'
+              ? 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-400 shadow-md shadow-slate-400/20 dark:shadow-slate-950/50'
               : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-white/40 dark:hover:bg-slate-800/40'
           }`}
         >
-          <ShieldCheck className={`h-4 w-4 ${currentMode === 'confidente' ? 'text-teal-600 dark:text-teal-400' : 'text-slate-500 dark:text-slate-500'}`} />
+          <ShieldCheck className={`h-4 w-4 ${currentMode === 'confidente' ? 'text-slate-600 dark:text-slate-400' : 'text-slate-500 dark:text-slate-500'}`} />
           <div className="flex flex-col text-left">
             <span>Modo Confidente</span>
             <span className="text-[10px] font-normal text-slate-500 dark:text-slate-400 hidden sm:inline">Efímero y Anónimo</span>
@@ -50,12 +50,12 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({
           }}
           className={`flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
             currentMode === 'evolucion'
-              ? 'bg-gradient-to-r from-teal-600 to-teal-700 dark:from-teal-700 dark:to-teal-800 text-white shadow-md shadow-teal-700/20 dark:shadow-teal-900/40'
+              ? 'bg-gradient-to-r from-slate-600 to-slate-700 dark:from-slate-700 dark:to-slate-800 text-white shadow-md shadow-slate-700/20 dark:shadow-slate-900/40'
               : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-white/40 dark:hover:bg-slate-800/40'
           }`}
         >
           {isAuthenticated ? (
-            <History className={`h-4 w-4 ${currentMode === 'evolucion' ? 'text-teal-200' : 'text-teal-600 dark:text-teal-500'}`} />
+            <History className={`h-4 w-4 ${currentMode === 'evolucion' ? 'text-slate-200' : 'text-slate-600 dark:text-slate-500'}`} />
           ) : (
             <Lock className="h-4 w-4 text-amber-600 dark:text-amber-500" />
           )}
@@ -68,7 +68,7 @@ export const ModeSelector: React.FC<ModeSelectorProps> = ({
                 </span>
               )}
             </span>
-            <span className={`text-[10px] font-normal hidden sm:inline ${currentMode === 'evolucion' ? 'text-teal-100' : 'text-slate-500 dark:text-slate-400'}`}>
+            <span className={`text-[10px] font-normal hidden sm:inline ${currentMode === 'evolucion' ? 'text-slate-100' : 'text-slate-500 dark:text-slate-400'}`}>
               Historial Guardado
             </span>
           </div>
