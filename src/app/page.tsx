@@ -24,6 +24,7 @@ export default function Home() {
     supabase.auth.getUser().then(({ data }) => {
       if (data.user) {
         setUser(data.user);
+        setCurrentMode('evolucion');
       }
     });
 
@@ -37,6 +38,8 @@ export default function Home() {
         setCurrentMode('confidente');
         setChats([]);
         setActiveChatId(null);
+      } else {
+        setCurrentMode('evolucion');
       }
     });
 
@@ -115,21 +118,6 @@ export default function Home() {
         onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
         showSidebarButton={currentMode === 'evolucion' && !!user}
       />
-
-      {/* Mode Selector */}
-      <div className="bg-slate-100/60 dark:bg-slate-900/60 border-b border-slate-200/60 dark:border-slate-800/60 py-1.5 shadow-xs transition-colors">
-        <ModeSelector
-          currentMode={currentMode}
-          onSelectMode={(mode) => {
-            setCurrentMode(mode);
-            if (mode === 'evolucion' && user && chats.length === 0) {
-              handleNewChat();
-            }
-          }}
-          isAuthenticated={!!user}
-          onOpenAuthModal={() => setIsAuthModalOpen(true)}
-        />
-      </div>
 
       {/* Main Body Area (Sidebar + ChatContainer) */}
       <div className="flex flex-1 overflow-hidden relative">

@@ -84,8 +84,8 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
   }, [activeChatId, currentMode, setMessages]);
 
   const welcomeMessage = currentMode === 'confidente'
-    ? '¡Hola! Soy Mentis, tu confidente y apoyo emocional. Estás en Modo Confidente (100% anónimo y efímero). Nada de lo que hablemos aquí quedará guardado al cerrar esta sesión. ¿De qué te gustaría hablar hoy?'
-    : '¡Hola! Bienvenido de nuevo a Mentis en Modo Evolución. Tus mensajes se guardarán para que puedas retomar nuestra conversación en cualquier momento. ¿Cómo te has sentido hoy?';
+    ? 'Chat 100% anónimo. Nada se guardará al cerrar la sesión.'
+    : 'Tus mensajes se guardan automáticamente.';
 
   return (
     <div className="flex flex-1 flex-col h-full bg-slate-50/50 dark:bg-slate-950/50 overflow-hidden">
@@ -108,25 +108,25 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-900/30 text-slate-700 dark:text-slate-400 border border-slate-200/80 dark:border-slate-700/50 text-xs font-semibold mb-4">
               {currentMode === 'confidente' ? (
                 <>
-                  <ShieldCheck className="h-3.5 w-3.5" /> Modo Confidente • Anónimo & Efímero
+                  <ShieldCheck className="h-3.5 w-3.5" /> Modo Confidente (Anónimo)
                 </>
               ) : (
                 <>
-                  <Sparkles className="h-3.5 w-3.5" /> Modo Evolución • Historial Guardado
+                  <Sparkles className="h-3.5 w-3.5" /> Modo Evolución (Guardado)
                 </>
               )}
             </div>
 
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6 bg-white dark:bg-slate-900/80 p-4 rounded-2xl border border-slate-100 dark:border-slate-900/50 shadow-xs">
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
               {welcomeMessage}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-left w-full">
-              <div className="p-3 bg-white dark:bg-slate-900/80 rounded-xl border border-slate-200/80 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
-                💡 <span className="font-semibold text-slate-800 dark:text-slate-300">Psicoeducación:</span> "¿Cómo puedo gestionar la frustración cuando algo no me sale bien?"
+              <div className="p-3 bg-white/80 dark:bg-slate-900/60 rounded-xl border border-slate-200/50 dark:border-slate-800/50 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "¿Cómo puedo gestionar la frustración cuando algo no me sale bien?" } } as any)}>
+                💡 <span className="font-semibold text-slate-800 dark:text-slate-300">Psicoeducación:</span> "¿Cómo puedo gestionar la frustración?"
               </div>
-              <div className="p-3 bg-white dark:bg-slate-900/80 rounded-xl border border-slate-200/80 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors">
-                🌱 <span className="font-semibold text-slate-800 dark:text-slate-300">Orientación:</span> "Me siento muy estresado por el trabajo, ¿qué técnicas me recomiendas?"
+              <div className="p-3 bg-white/80 dark:bg-slate-900/60 rounded-xl border border-slate-200/50 dark:border-slate-800/50 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "Me siento muy estresado por el trabajo, ¿qué técnicas me recomiendas?" } } as any)}>
+                🌱 <span className="font-semibold text-slate-800 dark:text-slate-300">Orientación:</span> "Me siento muy estresado por el trabajo"
               </div>
             </div>
           </div>
