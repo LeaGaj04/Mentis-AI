@@ -83,3 +83,48 @@ CREATE POLICY "Usuarios pueden borrar mensajes de sus chats"
       AND public.chats.user_id = auth.uid()
     )
   );
+
+-- ====================================================================
+-- 7. Tabla de Perfiles (Profiles) para Personalización de IA
+-- ====================================================================
+CREATE TABLE IF NOT EXISTS public.profiles (
+  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  first_name TEXT,
+  last_name TEXT,
+  phone TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- 8. Habilitar RLS en profiles
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Usuarios pueden ver su propio perfil" ON public.profiles;
+CREATE POLICY "Usuarios pueden ver su propio perfil"
+  ON public.profiles FOR SELECT
+  USING (auth.uid() = id);
+
+DROP POLICY IF EXISTS "Usuarios pueden actualizar su propio perfil" ON public.profiles;
+CREATE POLICY "Usuarios pueden actualizar su propio perfil"
+  ON public.profiles FOR UPDATE
+  USING (auth.uid() = id);
+
+-- 9. Trigger para crear perfil automáticamente al registrarse en auth.users
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.profiles (id, first_name, last_name, phone)
+  VALUES (
+    new.id,
+    new.raw_user_meta_data->>'first_name',
+    new.raw_user_meta_data->>'last_name',
+    new.raw_user_meta_data->>'phone'
+  );
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();

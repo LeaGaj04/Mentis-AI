@@ -25,7 +25,7 @@ const BrainHemisphere = ({ position, rotationOffset }: { position: [number, numb
         color="#0891b2" // Cyan
         wireframe={true} 
         transparent={true} 
-        opacity={0.15} 
+        opacity={0.8} 
       />
     </mesh>
   );
@@ -54,7 +54,7 @@ export const WireframeBrain: React.FC = () => {
         gl={{ antialias: false, alpha: true }}
         style={{ background: isDark ? '#020617' : '#f8fafc' }}
       >
-        <fog attach="fog" args={[isDark ? '#020617' : '#f8fafc', 3, 8]} />
+        <fog attach="fog" args={[isDark ? '#020617' : '#f8fafc', 5, 12]} />
         
         {/* Left Hemisphere */}
         <BrainHemisphere position={[-0.8, 0, 0]} rotationOffset={0} />
@@ -63,7 +63,7 @@ export const WireframeBrain: React.FC = () => {
         <BrainHemisphere position={[0.8, 0, 0]} rotationOffset={Math.PI} />
       </Canvas>
       {/* Overlay to reduce intensity and blend with UI */}
-      <div className="absolute inset-0 bg-white/70 dark:bg-slate-950/80 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-white/20 dark:bg-slate-950/30 backdrop-blur-[1px]" />
     </div>
   );
 };
