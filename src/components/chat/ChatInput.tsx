@@ -41,7 +41,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
     <div className="w-full max-w-4xl mx-auto px-4 pb-4 pt-2">
       <form
         onSubmit={handleSubmit}
-        className="relative flex flex-col rounded-2xl border border-teal-200 bg-white/90 backdrop-blur-md shadow-lg shadow-teal-900/5 focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20 transition-all"
+        className="relative flex flex-col rounded-2xl border border-teal-200 dark:border-teal-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg shadow-teal-900/5 dark:shadow-teal-900/10 focus-within:border-teal-500 dark:focus-within:border-teal-500 focus-within:ring-2 focus-within:ring-teal-500/20 dark:focus-within:ring-teal-500/10 transition-all"
       >
         <div className="flex items-end p-2 sm:p-3 gap-2">
           <textarea
@@ -52,13 +52,13 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
             disabled={isLoading}
-            className="flex-1 resize-none bg-transparent px-2 py-1.5 text-sm sm:text-base text-slate-800 placeholder-slate-400 focus:outline-none max-h-40 min-h-[44px]"
+            className="flex-1 resize-none bg-transparent px-2 py-1.5 text-sm sm:text-base text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none max-h-40 min-h-[44px]"
           />
 
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-600 text-white font-medium shadow-md shadow-teal-600/30 transition-all hover:bg-teal-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-600 dark:bg-teal-700 text-white font-medium shadow-md shadow-teal-600/30 dark:shadow-teal-900/40 transition-all hover:bg-teal-700 dark:hover:bg-teal-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-teal-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-teal-600 dark:disabled:hover:bg-teal-700"
             aria-label="Enviar mensaje"
           >
             {isLoading ? (
@@ -70,9 +70,8 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         </div>
       </form>
 
-      {/* Requirement: Static disclaimer text underneath input */}
-      <div className="mt-2 flex items-center justify-center gap-1.5 text-center text-xs text-slate-500 font-medium">
-        <Info className="h-3.5 w-3.5 text-teal-600 shrink-0" />
+      <div className="mt-2 flex items-center justify-center gap-1.5 text-center text-xs text-slate-500 dark:text-slate-400 font-medium">
+        <Info className="h-3.5 w-3.5 text-teal-600 dark:text-teal-500 shrink-0" />
         <span>Esta IA proporciona información general y no reemplaza la terapia profesional.</span>
       </div>
     </div>

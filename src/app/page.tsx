@@ -106,7 +106,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden bg-slate-50">
+    <div className="flex h-screen w-full flex-col overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors">
       {/* Header Component */}
       <Header
         user={user}
@@ -117,7 +117,7 @@ export default function Home() {
       />
 
       {/* Mode Selector */}
-      <div className="bg-slate-100/60 border-b border-slate-200/60 py-1.5 shadow-xs">
+      <div className="bg-slate-100/60 dark:bg-slate-900/60 border-b border-slate-200/60 dark:border-slate-800/60 py-1.5 shadow-xs transition-colors">
         <ModeSelector
           currentMode={currentMode}
           onSelectMode={(mode) => {
