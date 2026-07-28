@@ -88,7 +88,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
     : 'Tus mensajes se guardan automáticamente.';
 
   return (
-    <div className="flex flex-1 flex-col h-full bg-slate-50/50 dark:bg-slate-950/50 overflow-hidden">
+    <div className="flex flex-1 flex-col h-full bg-transparent overflow-hidden">
       <div className="flex-1 overflow-y-auto px-2 sm:px-4 py-4 space-y-2">
         {fetchingHistory ? (
           <div className="flex h-full items-center justify-center text-slate-400 dark:text-slate-500 gap-2 text-sm">
