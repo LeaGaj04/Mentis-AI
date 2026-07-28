@@ -1,7 +1,7 @@
 'use client';
 
-import React from 'react';
-import { User, LogOut, PanelLeft, Sparkles } from 'lucide-react';
+import Link from 'next/link';
+import { User, LogOut, PanelLeft, Sparkles, Home } from 'lucide-react';
 import { User as SupabaseUser } from '@supabase/supabase-js';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { MentisLogo } from '@/components/brand/MentisLogo';
@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         )}
 
-        <div className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity" title="Ir a la página de información">
           <div className="flex h-10 w-10 items-center justify-center">
             <MentisLogo className="w-8 h-8 drop-shadow-md" />
           </div>
@@ -47,10 +47,18 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400">Psicoeducación & Orientación Emocional</p>
           </div>
-        </div>
+        </Link>
       </div>
 
       <div className="flex items-center gap-2 sm:gap-3">
+        <Link 
+          href="/"
+          className="flex h-9 items-center justify-center gap-1.5 rounded-xl border border-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-200 px-3 transition-colors"
+          title="Volver a Inicio"
+        >
+          <Home className="h-4 w-4" />
+          <span className="hidden sm:inline text-xs font-semibold">Inicio</span>
+        </Link>
         <ThemeToggle />
         
         {user ? (
