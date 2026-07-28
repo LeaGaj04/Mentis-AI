@@ -1,5 +1,11 @@
 # Mentis AI | Explorador Cognitivo e Inteligencia Artificial
 
+## Demo de mentis-AI V1.0
+
+<img width="1914" height="944" alt="image" src="https://github.com/user-attachments/assets/5d7d8432-569f-424f-b34e-9ec99571e068" />
+
+---
+
 ## Sobre el Proyecto
 
 **Mentis AI** es una plataforma web vanguardista que combina Inteligencia Artificial con el análisis psicológico para rastrear, mapear y conectar tus patrones cognitivos. Diseñada con una estética premium, oscura y minimalista (utilizando técnicas de *glassmorphism*), integra un modelo 3D interactivo de una red neuronal que refleja la actividad de la mente.
