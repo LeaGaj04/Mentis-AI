@@ -20,9 +20,9 @@ export const MentisLogo: React.FC<{ className?: string }> = ({ className = "w-6 
           <stop offset="0%" stopColor="#ffffff" />
           <stop offset="100%" stopColor="#e2e8f0" /> {/* slate-200 */}
         </linearGradient>
-        <linearGradient id="mentis-gray" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#94a3b8" /> {/* slate-400 */}
-          <stop offset="100%" stopColor="#64748b" /> {/* slate-500 */}
+        <linearGradient id="mentis-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#60a5fa" /> {/* blue-400 */}
+          <stop offset="100%" stopColor="#2563eb" /> {/* blue-600 */}
         </linearGradient>
       </defs>
       
@@ -37,7 +37,7 @@ export const MentisLogo: React.FC<{ className?: string }> = ({ className = "w-6 
         {/* Right Triangle (Base facing left) */}
         <polygon 
           points="90,50 54,15 54,85" 
-          fill="url(#mentis-gray)" 
+          fill="url(#mentis-blue)" 
           opacity="0.9"
         />
         
