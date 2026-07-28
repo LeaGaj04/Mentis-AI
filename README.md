@@ -4,6 +4,14 @@
 
 <img width="1914" height="944" alt="image" src="https://github.com/user-attachments/assets/5d7d8432-569f-424f-b34e-9ec99571e068" />
 
+## Demo de mentis-AI V1.1
+
+<img width="1905" height="893" alt="image" src="https://github.com/user-attachments/assets/41b0f058-4dda-4073-8174-7c02ff8fc61e" />
+
+<img width="1908" height="945" alt="image" src="https://github.com/user-attachments/assets/5c39a1e6-d63b-46fc-849b-db95f5e0607e" />
+
+Probando colores en texto y logos de la plataforma para encontrar los mas llamativos para los usuarios de Mentis
+
 ---
 
 ## Sobre el Proyecto
