@@ -1,4 +1,4 @@
-import { openai } from '@ai-sdk/openai';
+import { google } from '@ai-sdk/google';
 import { streamText } from 'ai';
 import { createClient } from '@/lib/supabase/server';
 
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
     }
 
     const result = streamText({
-      model: openai('gpt-4o-mini'),
+      model: google('gemini-1.5-flash'),
       system: MENTIS_SYSTEM_PROMPT,
       messages,
       async onFinish({ text }) {
