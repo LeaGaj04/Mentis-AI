@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { Send, Loader2, Info } from 'lucide-react';
+import { AutoResizeTextarea } from '@/components/ui/AutoResizeTextarea';
 
 interface ChatInputProps {
   input: string;
@@ -18,15 +19,6 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   isLoading,
   placeholder = 'Escribe tu mensaje o cuéntame cómo te sientes...',
 }) => {
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${Math.min(textareaRef.current.scrollHeight, 160)}px`;
-    }
-  }, [input]);
-
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -44,8 +36,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
         className="relative flex flex-col rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg shadow-slate-900/5 dark:shadow-slate-900/10 focus-within:border-slate-500 dark:focus-within:border-slate-500 focus-within:ring-2 focus-within:ring-slate-500/20 dark:focus-within:ring-slate-500/10 transition-all"
       >
         <div className="flex items-end p-2 sm:p-3 gap-2">
-          <textarea
-            ref={textareaRef}
+          <AutoResizeTextarea
             rows={1}
             value={input || ''}
             onChange={handleInputChange}
