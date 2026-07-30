@@ -16,35 +16,42 @@ export const MentisLogo: React.FC<{ className?: string }> = ({ className = "w-6 
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <linearGradient id="mentis-white" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="100%" stopColor="#e2e8f0" /> {/* slate-200 */}
+        {/* Lavanda suave — serenidad e introspección */}
+        <linearGradient id="mentis-calm" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#c4b5fd" /> {/* calm-300 */}
+          <stop offset="100%" stopColor="#a78bfa" /> {/* calm-400 */}
         </linearGradient>
-        <linearGradient id="mentis-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#60a5fa" /> {/* blue-400 */}
-          <stop offset="100%" stopColor="#2563eb" /> {/* blue-600 */}
+        {/* Coral cálido — empatía y cercanía */}
+        <linearGradient id="mentis-warmth" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fb923c" /> {/* warmth-400 */}
+          <stop offset="100%" stopColor="#f97316" /> {/* warmth-500 */}
         </linearGradient>
+        {/* Glow central lavanda */}
+        <radialGradient id="mentis-center-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ede9fe" stopOpacity="1" />
+          <stop offset="100%" stopColor="#c4b5fd" stopOpacity="0.6" />
+        </radialGradient>
       </defs>
       
       <g filter="url(#neon-glow)">
-        {/* Left Triangle (Base facing right) */}
+        {/* Left Triangle — Lavanda (mente, calma) */}
         <polygon 
           points="10,50 46,15 46,85" 
-          fill="url(#mentis-white)" 
+          fill="url(#mentis-calm)" 
           opacity="0.9"
         />
         
-        {/* Right Triangle (Base facing left) */}
+        {/* Right Triangle — Coral (corazón, empatía) */}
         <polygon 
           points="90,50 54,15 54,85" 
-          fill="url(#mentis-blue)" 
+          fill="url(#mentis-warmth)" 
           opacity="0.9"
         />
         
-        {/* Central Core Connection */}
-        <circle cx="50" cy="50" r="4" fill="#ffffff" opacity="1" />
-        <circle cx="50" cy="35" r="2.5" fill="#ffffff" opacity="0.8" />
-        <circle cx="50" cy="65" r="2.5" fill="#ffffff" opacity="0.8" />
+        {/* Central Core — punto de conexión mente-corazón */}
+        <circle cx="50" cy="50" r="4" fill="url(#mentis-center-glow)" opacity="1" />
+        <circle cx="50" cy="35" r="2.5" fill="#ede9fe" opacity="0.8" />
+        <circle cx="50" cy="65" r="2.5" fill="#ede9fe" opacity="0.8" />
       </g>
     </svg>
   );
