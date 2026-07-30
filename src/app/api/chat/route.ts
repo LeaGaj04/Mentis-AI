@@ -8,6 +8,7 @@ import { MENTIS_SYSTEM_PROMPT } from '@/config/prompts';
 
 export async function POST(req: Request) {
   try {
+    const startTime = Date.now();
     const { messages, chatId, mode } = await req.json();
 
     // Check if user is authenticated for persistent saving (Modo Evolución)
@@ -34,7 +35,13 @@ export async function POST(req: Request) {
       model: google('gemini-1.5-flash'),
       system: MENTIS_SYSTEM_PROMPT,
       messages,
-      async onFinish({ text }) {
+      async onFinish({ text, usage }) {
+        const durationMs = Date.now() - startTime;
+        console.log(`[AI Telemetry] Generación completada en ${durationMs}ms`);
+        if (usage) {
+          console.log(`[AI Telemetry] Tokens: In=${usage.promptTokens}, Out=${usage.completionTokens}, Total=${usage.totalTokens}`);
+        }
+
         // Save assistant response to Supabase when streaming finishes if in Modo Evolución
         if (isEvolucionMode && text) {
           await supabase.from('messages').insert({
