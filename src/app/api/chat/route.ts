@@ -32,9 +32,9 @@ export async function POST(req: Request) {
     }
 
     const result = streamText({
-      model: google('gemini-1.5-flash'),
+      model: google('gemini-3.5-flash'),
       system: MENTIS_SYSTEM_PROMPT,
-      messages,
+      messages: messages.map((m: any) => ({ role: m.role, content: m.content })),
       async onFinish({ text, usage }) {
         const durationMs = Date.now() - startTime;
         console.log(`[AI Telemetry] Generación completada en ${durationMs}ms`);
@@ -59,7 +59,7 @@ export async function POST(req: Request) {
       },
     });
 
-    return result.toDataStreamResponse();
+    return result.toDataStreamResponse({ sendReasoning: false });
   } catch (error) {
     console.error('Error in /api/chat route:', error);
     return new Response(
