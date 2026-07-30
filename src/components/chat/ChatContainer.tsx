@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 import { ChatMessage } from './ChatMessage';
 import { ChatInput } from './ChatInput';
 import { ChatMode } from './ModeSelector';
-import { Sparkles, AlertTriangle, ShieldCheck, RefreshCw, Trash2 } from 'lucide-react';
+import { Sparkles, AlertTriangle, ShieldCheck, RefreshCw, Trash2, ArrowDown } from 'lucide-react';
 import { MentisLogo } from '@/components/brand/MentisLogo';
 
 interface ChatContainerProps {
@@ -21,8 +21,17 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
   onNewChatCreated,
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showScrollButton, setShowScrollButton] = useState(false);
   const [fetchingHistory, setFetchingHistory] = useState(false);
   const [customError, setCustomError] = useState<string | null>(null);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainerRef.current;
+      setShowScrollButton(scrollHeight - scrollTop - clientHeight > 150);
+    }
+  };
 
   const {
     messages,
@@ -92,8 +101,12 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
     : 'Tus mensajes se guardan automáticamente.';
 
   return (
-    <div className="flex flex-1 flex-col h-full bg-transparent overflow-hidden">
-      <div className="flex-1 overflow-y-auto px-2 sm:px-4 py-4 space-y-2">
+    <div className="flex flex-1 flex-col h-full bg-transparent overflow-hidden relative">
+      <div 
+        className="flex-1 overflow-y-auto px-2 sm:px-4 py-4 space-y-2 custom-scrollbar"
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+      >
         {fetchingHistory ? (
           <div className="flex h-full items-center justify-center text-slate-400 dark:text-slate-500 gap-2 text-sm">
             <RefreshCw className="h-5 w-5 animate-spin text-slate-600 dark:text-slate-500" />
@@ -183,6 +196,16 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
 
         <div ref={messagesEndRef} />
       </div>
+
+      {showScrollButton && (
+        <button
+          onClick={scrollToBottom}
+          className="absolute bottom-[90px] right-6 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 shadow-xl shadow-slate-900/20 hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/10 dark:border-slate-900/10 animate-fade-in"
+          aria-label="Ir al final de la conversación"
+        >
+          <ArrowDown className="h-5 w-5" />
+        </button>
+      )}
 
       <ChatInput
         input={input}
