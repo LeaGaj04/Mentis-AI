@@ -6,11 +6,18 @@
 
 ## Demo de mentis-AI V1.1
 
+Probando colores en texto y logos de la plataforma para encontrar los mas llamativos para los usuarios de Mentis
+
 <img width="1905" height="893" alt="image" src="https://github.com/user-attachments/assets/41b0f058-4dda-4073-8174-7c02ff8fc61e" />
 
 <img width="1908" height="945" alt="image" src="https://github.com/user-attachments/assets/5c39a1e6-d63b-46fc-849b-db95f5e0607e" />
 
-Probando colores en texto y logos de la plataforma para encontrar los mas llamativos para los usuarios de Mentis
+## Demo de mentis-AI v1.2
+
+Demo al *90* porciento funcional ya responde con normalidad sobre cada tema de conversacion
+
+<img width="1910" height="943" alt="image" src="https://github.com/user-attachments/assets/7da27aa4-897f-4905-aa3f-2bd26e6b166c" />
+
 
 ---
 
