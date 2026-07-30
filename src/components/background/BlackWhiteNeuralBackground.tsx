@@ -41,8 +41,13 @@ const ParticleNetwork = () => {
       if (inEllipsoid && !inGap && !isBrainStemArea) {
         pos.push(x, y, z);
         
-        // Pure white/light blue tint
-        col.push(0.9, 0.9, 1.0);
+        // Lavanda sutil con variación — tonos terapéuticos
+        const variation = Math.random() * 0.15;
+        col.push(
+          0.78 + variation,   // R — tinte lavanda
+          0.72 + variation,   // G
+          0.98 + variation * 0.5  // B — más azul-violeta
+        );
         i++;
       }
     }
@@ -136,10 +141,11 @@ export const BlackWhiteNeuralBackground: React.FC = () => {
   const isDark = resolvedTheme === 'dark';
 
   if (!mounted) {
-    return <div className="fixed inset-0 z-[-1] pointer-events-none bg-slate-50 dark:bg-[#050505]" />;
+    return <div className="fixed inset-0 z-[-1] pointer-events-none bg-calm-50 dark:bg-[#0c0a1a]" />;
   }
 
-  const bgColor = isDark ? '#050505' : '#f1f5f9';
+  // Fondos terapéuticos: lavanda claro / índigo profundo
+  const bgColor = isDark ? '#0c0a1a' : '#faf8ff';
 
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none transition-opacity duration-1000">
