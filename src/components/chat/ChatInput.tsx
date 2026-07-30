@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Send, Loader2, Info } from 'lucide-react';
 import { AutoResizeTextarea } from '@/components/ui/AutoResizeTextarea';
 

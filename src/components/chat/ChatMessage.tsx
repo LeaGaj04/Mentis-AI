@@ -3,6 +3,9 @@
 import React from 'react';
 import { Bot, User, Sparkles } from 'lucide-react';
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 interface ChatMessageProps {
   role: 'user' | 'assistant' | 'system';
   content: string;
@@ -38,8 +41,17 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ role, content }) => {
           </div>
         )}
 
-        <div className="whitespace-pre-wrap text-sm sm:text-base leading-relaxed break-words font-sans">
-          {content}
+        <div className="text-sm sm:text-base leading-relaxed break-words font-sans">
+          {isUser ? (
+            <div className="whitespace-pre-wrap">{content}</div>
+          ) : (
+            <ReactMarkdown 
+              remarkPlugins={[remarkGfm]}
+              className="prose prose-slate dark:prose-invert max-w-none prose-p:leading-relaxed prose-pre:bg-slate-800 prose-pre:text-slate-100 prose-headings:font-bold prose-a:text-blue-600 dark:prose-a:text-blue-400"
+            >
+              {content}
+            </ReactMarkdown>
+          )}
         </div>
       </div>
 
