@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
-import { Bot, User, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Bot, User, Sparkles, Copy, Check } from 'lucide-react';
+import { toast } from 'sonner';
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -14,6 +15,14 @@ interface ChatMessageProps {
 
 export const ChatMessage: React.FC<ChatMessageProps> = ({ role, content }) => {
   const isUser = role === 'user';
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(content);
+    setIsCopied(true);
+    toast.success('Mensaje copiado al portapapeles');
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   return (
     <div
@@ -35,9 +44,18 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({ role, content }) => {
         }`}
       >
         {!isUser && (
-          <div className="flex items-center gap-1.5 pb-1 mb-1 border-b border-slate-50 dark:border-slate-900/50 text-xs font-semibold text-slate-700 dark:text-slate-500">
-            <Sparkles className="h-3 w-3" />
-            <span>Mentis</span>
+          <div className="flex items-center justify-between pb-1 mb-1 border-b border-slate-50 dark:border-slate-900/50">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-slate-500">
+              <Sparkles className="h-3 w-3" />
+              <span>Mentis</span>
+            </div>
+            <button
+              onClick={handleCopy}
+              className="opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+              title="Copiar mensaje"
+            >
+              {isCopied ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
+            </button>
           </div>
         )}
 
