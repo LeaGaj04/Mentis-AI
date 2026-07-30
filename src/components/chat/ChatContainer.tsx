@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useChat } from 'ai/react';
+import { toast } from 'sonner';
 import { ChatMessage } from './ChatMessage';
 import { ChatInput } from './ChatInput';
 import { ChatMode } from './ModeSelector';
@@ -41,6 +42,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
     },
     onError: (err) => {
       console.error('API Chat Error:', err);
+      toast.error('No pudimos conectar con Mentis en este momento. Por favor verifica tu conexión.');
       setCustomError('No pudimos conectar con Mentis en este momento. Por favor verifica tu conexión o intenta nuevamente.');
     },
   });
@@ -73,6 +75,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
         })
         .catch((err) => {
           console.error('Error loading chat messages:', err);
+          toast.error('Error al cargar el historial de la conversación.');
           setCustomError('Error al cargar el historial de la conversación.');
         })
         .finally(() => {
