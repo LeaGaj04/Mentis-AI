@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 import { ChatMessage } from './ChatMessage';
 import { ChatInput } from './ChatInput';
 import { ChatMode } from './ModeSelector';
-import { Sparkles, AlertTriangle, ShieldCheck, RefreshCw } from 'lucide-react';
+import { Sparkles, AlertTriangle, ShieldCheck, RefreshCw, Trash2 } from 'lucide-react';
 import { MentisLogo } from '@/components/brand/MentisLogo';
 
 interface ChatContainerProps {
@@ -136,6 +136,15 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
           </div>
         ) : (
           <>
+            <div className="flex justify-end px-2 sm:px-4 pb-2">
+              <button
+                onClick={() => setMessages([])}
+                className="flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors px-3 py-1.5 rounded-full bg-white/50 dark:bg-slate-900/50 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 shadow-sm"
+              >
+                <Trash2 className="h-3.5 w-3.5" />
+                Limpiar chat
+              </button>
+            </div>
             {messages.map((msg) => (
               <ChatMessage
                 key={msg.id}
