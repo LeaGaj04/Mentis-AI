@@ -67,13 +67,16 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">{user.email}</span>
               <span className="text-[10px] text-slate-600 dark:text-slate-400 font-medium">Modo Evolución Activo</span>
             </div>
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-slate-600 to-slate-800 dark:from-slate-500 dark:to-slate-700 text-white font-bold text-sm uppercase shadow-sm border border-white dark:border-slate-800">
+              {user.email ? user.email.charAt(0) : <User className="h-4 w-4" />}
+            </div>
             <button
               onClick={onSignOut}
-              className="flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-red-600 dark:hover:text-red-400 transition-all"
+              className="flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-red-600 dark:hover:text-red-400 transition-all ml-1"
               title="Cerrar sesión"
             >
               <LogOut className="h-4 w-4" />
-              <span className="hidden sm:inline">Cerrar Sesión</span>
+              <span className="hidden sm:inline">Cerrar</span>
             </button>
           </div>
         ) : (
