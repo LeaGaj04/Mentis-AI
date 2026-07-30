@@ -30,7 +30,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      if (input.trim() && !isLoading) {
+      if ((input || '').trim() && !isLoading) {
         const form = e.currentTarget.form;
         if (form) form.requestSubmit();
       }
@@ -47,7 +47,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
           <textarea
             ref={textareaRef}
             rows={1}
-            value={input}
+            value={input || ''}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
@@ -57,7 +57,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
           <button
             type="submit"
-            disabled={isLoading || !input.trim()}
+            disabled={isLoading || !(input || '').trim()}
             className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-600 dark:bg-slate-700 text-white font-medium shadow-md shadow-slate-600/30 dark:shadow-slate-900/40 transition-all hover:bg-slate-700 dark:hover:bg-slate-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-slate-600 dark:disabled:hover:bg-slate-700"
             aria-label="Enviar mensaje"
           >
