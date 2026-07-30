@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, MessageSquare, Plus, Trash2, Network, Sparkles, Crown, Clock } from 'lucide-react';
+import { X, MessageSquare, Plus, Trash2, Network, Sparkles, Crown, Clock, RefreshCw } from 'lucide-react';
 
 interface ChatSidebarProps {
   isOpen: boolean;
@@ -10,7 +10,7 @@ interface ChatSidebarProps {
   activeChatId: string | null;
   onSelectChat: (chatId: string) => void;
   onNewChat: () => void;
-  onDeleteChat: (chatId: string, e: React.MouseEvent) => void;
+  onDeleteChat: (chatId: string, e: React.MouseEvent) => void | Promise<void>;
 }
 
 export const ChatSidebar: React.FC<ChatSidebarProps> = ({
@@ -23,6 +23,17 @@ export const ChatSidebar: React.FC<ChatSidebarProps> = ({
   onDeleteChat,
 }) => {
   const [activeTab, setActiveTab] = useState<'chats' | 'network'>('chats');
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const handleDelete = async (chatId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setDeletingId(chatId);
+    try {
+      await onDeleteChat(chatId, e);
+    } finally {
+      setDeletingId(null);
+    }
+  };
 
   return (
     <>
@@ -114,11 +125,16 @@ export const ChatSidebar: React.FC<ChatSidebarProps> = ({
                       </div>
                       
                       <button
-                        onClick={(e) => onDeleteChat(chat.id, e)}
-                        className="shrink-0 rounded-md p-1.5 opacity-0 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-100 group-hover:opacity-100 transition-all"
+                        onClick={(e) => handleDelete(chat.id, e)}
+                        disabled={deletingId === chat.id}
+                        className="shrink-0 rounded-md p-1.5 opacity-0 text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-slate-100 group-hover:opacity-100 transition-all disabled:opacity-100"
                         title="Eliminar conversación"
                       >
-                        <Trash2 className="h-4 w-4" />
+                        {deletingId === chat.id ? (
+                          <RefreshCw className="h-4 w-4 animate-spin text-red-500" />
+                        ) : (
+                          <Trash2 className="h-4 w-4" />
+                        )}
                       </button>
                     </div>
                   ))
