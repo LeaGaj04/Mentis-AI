@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Send, Loader2, Info } from 'lucide-react';
+import { Send, Loader2, Info, Square } from 'lucide-react';
 import { AutoResizeTextarea } from '@/components/ui/AutoResizeTextarea';
 
 interface ChatInputProps {
@@ -9,6 +9,7 @@ interface ChatInputProps {
   handleInputChange: (e: React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   isLoading: boolean;
+  stop: () => void;
   placeholder?: string;
 }
 
@@ -17,6 +18,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
   handleInputChange,
   handleSubmit,
   isLoading,
+  stop,
   placeholder = 'Escribe tu mensaje o cuéntame cómo te sientes...',
 }) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -46,18 +48,25 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             className="flex-1 resize-none bg-transparent px-2 py-1.5 text-sm sm:text-base text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none max-h-40 min-h-[44px]"
           />
 
-          <button
-            type="submit"
-            disabled={isLoading || !(input || '').trim()}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-600 dark:bg-slate-700 text-white font-medium shadow-md shadow-slate-600/30 dark:shadow-slate-900/40 transition-all hover:bg-slate-700 dark:hover:bg-slate-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-slate-600 dark:disabled:hover:bg-slate-700"
-            aria-label="Enviar mensaje"
-          >
-            {isLoading ? (
-              <Loader2 className="h-5 w-5 animate-spin text-white" />
-            ) : (
+          {isLoading ? (
+            <button
+              type="button"
+              onClick={stop}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-500 dark:bg-red-600 text-white font-medium shadow-md shadow-red-500/30 transition-all hover:bg-red-600 dark:hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500/50"
+              aria-label="Detener generación"
+            >
+              <Square className="h-4 w-4 fill-current" />
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={!(input || '').trim()}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-600 dark:bg-slate-700 text-white font-medium shadow-md shadow-slate-600/30 dark:shadow-slate-900/40 transition-all hover:bg-slate-700 dark:hover:bg-slate-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-slate-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-slate-600 dark:disabled:hover:bg-slate-700"
+              aria-label="Enviar mensaje"
+            >
               <Send className="h-5 w-5" />
-            )}
-          </button>
+            </button>
+          )}
         </div>
       </form>
 

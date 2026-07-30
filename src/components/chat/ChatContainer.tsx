@@ -32,6 +32,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
     error,
     setMessages,
     reload,
+    stop,
   } = useChat({
     api: '/api/chat',
     body: {
@@ -179,6 +180,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
           handleSubmit(e);
         }}
         isLoading={isLoading}
+        stop={stop}
       />
     </div>
   );
