@@ -108,21 +108,21 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
         onScroll={handleScroll}
       >
         {fetchingHistory ? (
-          <div className="flex h-full items-center justify-center text-slate-400 dark:text-slate-500 gap-2 text-sm">
-            <RefreshCw className="h-5 w-5 animate-spin text-slate-600 dark:text-slate-500" />
+          <div className="flex h-full items-center justify-center text-calm-400 dark:text-calm-500 gap-2 text-sm">
+            <RefreshCw className="h-5 w-5 animate-spin text-calm-500 dark:text-calm-400" />
             <span>Cargando tu conversación...</span>
           </div>
         ) : messages.length === 0 ? (
           <div className="flex min-h-[60vh] flex-col items-center justify-center text-center p-6 max-w-lg mx-auto animate-fade-in">
             <div className="flex h-16 w-16 items-center justify-center mb-4">
-              <MentisLogo className="w-16 h-16 drop-shadow-xl" />
+              <MentisLogo className="w-16 h-16 drop-shadow-xl animate-breathing-glow" />
             </div>
 
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-200 mb-2">
-              Te doy la bienvenida a <span className="text-slate-700 dark:text-slate-400">Mentis</span>
+            <h2 className="text-xl sm:text-2xl font-bold text-mist-800 dark:text-mist-200 mb-2">
+              Te doy la bienvenida a <span className="text-transparent bg-clip-text bg-gradient-to-r from-calm-500 to-warmth-400">Mentis</span>
             </h2>
 
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-900/30 text-slate-700 dark:text-slate-400 border border-slate-200/80 dark:border-slate-700/50 text-xs font-semibold mb-4">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-calm-50 dark:bg-calm-900/30 text-calm-700 dark:text-calm-300 border border-calm-200/80 dark:border-calm-700/50 text-xs font-semibold mb-4">
               {currentMode === 'confidente' ? (
                 <>
                   <ShieldCheck className="h-3.5 w-3.5" /> Modo Confidente (Anónimo)
@@ -134,16 +134,16 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
               )}
             </div>
 
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
+            <p className="text-sm text-mist-600 dark:text-mist-400 mb-6">
               {welcomeMessage}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-left w-full">
-              <div className="p-3 bg-white/80 dark:bg-slate-900/60 rounded-xl border border-slate-200/50 dark:border-slate-800/50 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "¿Cómo puedo gestionar la frustración cuando algo no me sale bien?" } } as any)}>
-                💡 <span className="font-semibold text-slate-800 dark:text-slate-300">Psicoeducación:</span> "¿Cómo puedo gestionar la frustración?"
+              <div className="p-3 bg-white/80 dark:bg-mist-900/60 rounded-xl border border-calm-200/50 dark:border-calm-800/50 text-mist-600 dark:text-mist-400 hover:border-calm-300 dark:hover:border-calm-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "¿Cómo puedo gestionar la frustración cuando algo no me sale bien?" } } as any)}>
+                💡 <span className="font-semibold text-calm-700 dark:text-calm-300">Psicoeducación:</span> "¿Cómo puedo gestionar la frustración?"
               </div>
-              <div className="p-3 bg-white/80 dark:bg-slate-900/60 rounded-xl border border-slate-200/50 dark:border-slate-800/50 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "Me siento muy estresado por el trabajo, ¿qué técnicas me recomiendas?" } } as any)}>
-                🌱 <span className="font-semibold text-slate-800 dark:text-slate-300">Orientación:</span> "Me siento muy estresado por el trabajo"
+              <div className="p-3 bg-white/80 dark:bg-mist-900/60 rounded-xl border border-warmth-200/50 dark:border-warmth-800/50 text-mist-600 dark:text-mist-400 hover:border-warmth-300 dark:hover:border-warmth-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "Me siento muy estresado por el trabajo, ¿qué técnicas me recomiendas?" } } as any)}>
+                🌱 <span className="font-semibold text-warmth-600 dark:text-warmth-300">Orientación:</span> "Me siento muy estresado por el trabajo"
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
             <div className="flex justify-end px-2 sm:px-4 pb-2">
               <button
                 onClick={() => setMessages([])}
-                className="flex items-center gap-1.5 text-xs font-medium text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors px-3 py-1.5 rounded-full bg-white/50 dark:bg-slate-900/50 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 shadow-sm"
+                className="flex items-center gap-1.5 text-xs font-medium text-mist-500 hover:text-calm-700 dark:text-mist-400 dark:hover:text-calm-300 transition-colors px-3 py-1.5 rounded-full bg-white/50 dark:bg-mist-900/50 hover:bg-calm-50 dark:hover:bg-calm-900 border border-calm-200 dark:border-calm-800 shadow-sm"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 Limpiar chat
@@ -170,7 +170,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
         )}
 
         {isLoading && (
-          <div className="flex items-center gap-2 p-4 text-xs text-slate-700 dark:text-slate-500 font-medium animate-pulse">
+          <div className="flex items-center gap-2 p-4 text-xs text-calm-600 dark:text-calm-400 font-medium animate-pulse">
             <Sparkles className="h-4 w-4 animate-spin" />
             <span>Mentis está pensando y escribiendo...</span>
           </div>
@@ -187,7 +187,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
                 setCustomError(null);
                 reload();
               }}
-              className="flex items-center gap-1 font-semibold text-red-700 dark:text-red-400 hover:underline bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-red-300 dark:border-red-800/50"
+              className="flex items-center gap-1 font-semibold text-red-700 dark:text-red-400 hover:underline bg-white dark:bg-mist-900 px-3 py-1.5 rounded-lg border border-red-300 dark:border-red-800/50"
             >
               <RefreshCw className="h-3.5 w-3.5" /> Reintentar
             </button>
@@ -200,7 +200,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
       {showScrollButton && (
         <button
           onClick={scrollToBottom}
-          className="absolute bottom-[90px] right-6 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-slate-800 dark:bg-slate-200 text-white dark:text-slate-900 shadow-xl shadow-slate-900/20 hover:-translate-y-1 hover:shadow-2xl transition-all border border-white/10 dark:border-slate-900/10 animate-fade-in"
+          className="absolute bottom-[90px] right-6 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-calm-700 dark:bg-calm-300 text-white dark:text-calm-900 shadow-xl shadow-calm-900/20 hover:-translate-y-1 hover:shadow-2xl transition-all border border-calm-600/20 dark:border-calm-200/20 animate-fade-in"
           aria-label="Ir al final de la conversación"
         >
           <ArrowDown className="h-5 w-5" />
