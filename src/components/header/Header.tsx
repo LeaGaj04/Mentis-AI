@@ -5,6 +5,7 @@ import { User, LogOut, PanelLeft, Sparkles, Home } from 'lucide-react';
 import { User as SupabaseUser } from '@supabase/supabase-js';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { MentisLogo } from '@/components/brand/MentisLogo';
+import ShinyText from '@/components/reactbits/ShinyText';
 
 interface HeaderProps {
   user: SupabaseUser | null;
@@ -42,7 +43,8 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="flex items-center gap-1.5">
               <h1 className="text-lg font-bold text-mist-800 dark:text-mist-200 tracking-tight">Mentis</h1>
               <span className="flex items-center gap-1 rounded-full bg-calm-100 dark:bg-calm-900/30 px-2 py-0.5 text-[10px] font-bold text-calm-700 dark:text-calm-300 border border-calm-200/60 dark:border-calm-700/50">
-                <Sparkles className="h-3 w-3" /> AI
+                <Sparkles className="h-3 w-3" />
+                <ShinyText shimmerColor="rgba(139, 92, 246, 0.4)" speed={4}>AI</ShinyText>
               </span>
             </div>
             <p className="text-xs text-mist-500 dark:text-mist-400">Psicoeducación & Orientación Emocional</p>
