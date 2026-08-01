@@ -104,7 +104,7 @@ src/
 │   ├── reactbits/        # Componentes interactivos y animaciones premium
 │   ├── theme/            # Proveedores y toggle del modo oscuro
 │   └── ui/               # Componentes genéricos de interfaz
-├── config/               # Configuraciones (ej. System Prompts de la IA)
+├── config/               # Configuraciones
 ├── lib/                  # Lógica de negocio y utilidades
 │   └── supabase/         # Clientes de base de datos (Cliente y Servidor)
 └── middleware.ts         # Middleware para proteger rutas y verificar sesiones
