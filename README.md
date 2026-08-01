@@ -14,7 +14,7 @@ Probando colores en texto y logos de la plataforma para encontrar los mas llamat
 
 ## Demo de mentis-AI v1.2
 
-Demo al *90* porciento funcional ya responde con normalidad sobre cada tema de conversacion
+Demo al *90* porciento funcional responde con normalidad sobre cada tema de conversacion
 
 <img width="1910" height="943" alt="image" src="https://github.com/user-attachments/assets/7da27aa4-897f-4905-aa3f-2bd26e6b166c" />
 
