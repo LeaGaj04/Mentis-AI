@@ -80,3 +80,32 @@ El proyecto está diseñado para funcionar de manera fluida y privada, utilizand
    npm run dev
    ```
    Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación en funcionamiento.
+
+---
+
+## Arquitectura del Proyecto
+
+Para mantener el código organizado y escalable, Mentis-AI sigue una arquitectura basada en componentes y el **App Router** de Next.js. A continuación se presenta la estructura principal del directorio `src/`:
+
+```text
+src/
+├── app/                  # Rutas y páginas de la aplicación
+│   ├── api/              # Endpoints del backend (manejo de chats y base de datos)
+│   ├── chat/             # Página principal de la interfaz del chat
+│   ├── globals.css       # Estilos globales, variables CSS y Tailwind
+│   ├── layout.tsx        # Layout global (proveedores de estado y tema)
+│   └── page.tsx          # Landing page (Hero, características, privacidad)
+├── components/           # Componentes modulares y reutilizables
+│   ├── auth/             # Modales y flujos de autenticación
+│   ├── background/       # Renderizados de la red neuronal en 3D (Three.js)
+│   ├── brand/            # Logos y recursos gráficos de la marca
+│   ├── chat/             # Elementos del chat (Mensajes, Input, Sidebar, Selector de Modo)
+│   ├── header/           # Barra de navegación principal
+│   ├── reactbits/        # Componentes interactivos y animaciones premium
+│   ├── theme/            # Proveedores y toggle del modo oscuro
+│   └── ui/               # Componentes genéricos de interfaz
+├── config/               # Configuraciones (ej. System Prompts de la IA)
+├── lib/                  # Lógica de negocio y utilidades
+│   └── supabase/         # Clientes de base de datos (Cliente y Servidor)
+└── middleware.ts         # Middleware para proteger rutas y verificar sesiones
+```
