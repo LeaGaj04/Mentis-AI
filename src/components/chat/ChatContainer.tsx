@@ -8,6 +8,8 @@ import { ChatInput } from './ChatInput';
 import { ChatMode } from './ModeSelector';
 import { Sparkles, AlertTriangle, ShieldCheck, RefreshCw, Trash2, ArrowDown } from 'lucide-react';
 import { MentisLogo } from '@/components/brand/MentisLogo';
+import AnimatedList from '@/components/reactbits/AnimatedList';
+import GradientText from '@/components/reactbits/GradientText';
 
 interface ChatContainerProps {
   currentMode: ChatMode;
@@ -119,7 +121,7 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
             </div>
 
             <h2 className="text-xl sm:text-2xl font-bold text-mist-800 dark:text-mist-200 mb-2">
-              Te doy la bienvenida a <span className="text-transparent bg-clip-text bg-gradient-to-r from-calm-500 to-warmth-400">Mentis</span>
+              Te doy la bienvenida a <GradientText colors={['#8b5cf6', '#a78bfa', '#fb923c', '#fdba74', '#8b5cf6']} speed={5}>Mentis</GradientText>
             </h2>
 
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-calm-50 dark:bg-calm-900/30 text-calm-700 dark:text-calm-300 border border-calm-200/80 dark:border-calm-700/50 text-xs font-semibold mb-4">
@@ -138,14 +140,20 @@ export const ChatContainer: React.FC<ChatContainerProps> = ({
               {welcomeMessage}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-left w-full">
+            <AnimatedList
+              className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-left w-full"
+              staggerDelay={150}
+              duration={500}
+              from={{ opacity: 0, y: 15, scale: 0.97 }}
+              to={{ opacity: 1, y: 0, scale: 1 }}
+            >
               <div className="p-3 bg-white/80 dark:bg-mist-900/60 rounded-xl border border-calm-200/50 dark:border-calm-800/50 text-mist-600 dark:text-mist-400 hover:border-calm-300 dark:hover:border-calm-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "¿Cómo puedo gestionar la frustración cuando algo no me sale bien?" } } as any)}>
                 💡 <span className="font-semibold text-calm-700 dark:text-calm-300">Psicoeducación:</span> "¿Cómo puedo gestionar la frustración?"
               </div>
               <div className="p-3 bg-white/80 dark:bg-mist-900/60 rounded-xl border border-warmth-200/50 dark:border-warmth-800/50 text-mist-600 dark:text-mist-400 hover:border-warmth-300 dark:hover:border-warmth-700 transition-colors backdrop-blur-sm cursor-pointer" onClick={() => handleInputChange({ target: { value: "Me siento muy estresado por el trabajo, ¿qué técnicas me recomiendas?" } } as any)}>
                 🌱 <span className="font-semibold text-warmth-600 dark:text-warmth-300">Orientación:</span> "Me siento muy estresado por el trabajo"
               </div>
-            </div>
+            </AnimatedList>
           </div>
         ) : (
           <>
