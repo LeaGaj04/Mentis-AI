@@ -3,6 +3,7 @@
 import React from 'react';
 import { Send, Loader2, Info, Square } from 'lucide-react';
 import { AutoResizeTextarea } from '@/components/ui/AutoResizeTextarea';
+import Magnet from '@/components/reactbits/Magnet';
 
 interface ChatInputProps {
   input: string;
@@ -58,14 +59,16 @@ export const ChatInput: React.FC<ChatInputProps> = ({
               <Square className="h-4 w-4 fill-current" />
             </button>
           ) : (
-            <button
-              type="submit"
-              disabled={!(input || '').trim()}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-calm-600 dark:bg-calm-700 text-white font-medium shadow-md shadow-calm-600/30 dark:shadow-calm-900/40 transition-all hover:bg-calm-500 dark:hover:bg-calm-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-calm-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-calm-600 dark:disabled:hover:bg-calm-700"
-              aria-label="Enviar mensaje"
-            >
-              <Send className="h-5 w-5" />
-            </button>
+            <Magnet strength={0.3} maxDistance={8} disabled={!(input || '').trim()}>
+              <button
+                type="submit"
+                disabled={!(input || '').trim()}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-calm-600 dark:bg-calm-700 text-white font-medium shadow-md shadow-calm-600/30 dark:shadow-calm-900/40 transition-all hover:bg-calm-500 dark:hover:bg-calm-600 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-calm-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-calm-600 dark:disabled:hover:bg-calm-700"
+                aria-label="Enviar mensaje"
+              >
+                <Send className="h-5 w-5" />
+              </button>
+            </Magnet>
           )}
         </div>
       </form>
