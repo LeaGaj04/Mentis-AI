@@ -97,7 +97,7 @@ src/
 │   └── page.tsx          # Landing page (Hero, características, privacidad)
 ├── components/           # Componentes modulares y reutilizables
 │   ├── auth/             # Modales y flujos de autenticación
-│   ├── background/       # Renderizados de la red neuronal en 3D (Three.js)
+│   ├── background/       # Renderizados de la red neuronal en 3D 
 │   ├── brand/            # Logos y recursos gráficos de la marca
 │   ├── chat/             # Elementos del chat (Mensajes, Input, Sidebar, Selector de Modo)
 │   ├── header/           # Barra de navegación principal
